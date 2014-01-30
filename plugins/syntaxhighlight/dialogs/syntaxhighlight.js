@@ -19,8 +19,8 @@ CKEDITOR.dialog.add( 'syntaxhighlightDialog', function( editor ) {
 		var options=getDefaultOptions();
 		var optionsString=preElement.getAttribute('class');
 		if(optionsString) {
-			if(optionsString.indexOf('brush')>-1) {
-				var match=/brush:[ ]*(\w*)/.exec(optionsString);
+			if(optionsString.indexOf('prettyprint')>-1) {
+				var match=/prettyprint lang-[ ]*(\w*)/.exec(optionsString);
 				if(match!=null&&match.length>0) {
 					options.lang=match[1].replace(/^\s+|\s+$/g,'');
 					if(options.lang=='actionscript') options.lang='as3';
@@ -87,7 +87,7 @@ CKEDITOR.dialog.add( 'syntaxhighlightDialog', function( editor ) {
 		return options
 	};
 	var getStringForOptions=function(optionsObject) {
-		var result='brush:'+optionsObject.lang+';';
+		var result='prettyprint lang-'+ optionsObject.lang;
 		if(optionsObject.hideGutter) {
 			result+='gutter:false;'
 		}
